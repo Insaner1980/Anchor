@@ -16,7 +16,10 @@ sealed class AnchorRoute(
     data object Home : AnchorRoute("home", R.string.screen_home)
     data object Library : AnchorRoute("library", R.string.screen_library)
     data object Timeline : AnchorRoute("timeline", R.string.screen_timeline)
-    data object ResourceDetail : AnchorRoute("resource/{resourceId}", R.string.screen_resource_detail)
+    data object ResourceDetail : AnchorRoute("resource/{resourceId}", R.string.screen_resource_detail) {
+        fun createRoute(resourceId: Long): String = "resource/$resourceId"
+    }
+
     data object HelpNeedPicker : AnchorRoute("help/need", R.string.screen_help_need)
     data object HelpResults : AnchorRoute("help/results/{tagId}", R.string.screen_help_results) {
         fun createRoute(tagId: Long): String = "help/results/$tagId"

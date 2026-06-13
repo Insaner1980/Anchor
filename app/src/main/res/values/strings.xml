@@ -71,4 +71,14 @@
     <string name="library_view_timeline">Timeline</string>
     <string name="library_favorites">Favorites</string>
     <string name="library_empty">No saved anchors match this view.</string>
+    <string name="detail_save_changes">Save changes</string>
+    <string name="detail_favorite">Favorite</string>
+    <string name="detail_delete">Delete</string>
+    <string name="detail_delete_title">Delete this anchor?</string>
+    <string name="detail_delete_body">This removes it from Anchor.</string>
+    <string name="detail_cancel">Cancel</string>
+    <string name="tag_manager_new_label">New NEED tag</string>
+    <string name="tag_manager_create">Create</string>
+    <string name="tag_manager_hide">Hide</string>
+    <string name="tag_manager_delete">Delete</string>
 </resources>

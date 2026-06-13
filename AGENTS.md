@@ -25,6 +25,7 @@ No previous sessions found.
 - Capture flow: `ShareCaptureActivity` converts `ACTION_SEND` text/images into `CaptureInitialDraft` and hosts `CaptureRoute`; `CaptureViewModel` saves song/photo captures through `ResourceRepository`
 - Home/Help flow: `HomeRoute` opens `HelpNeedPickerRoute`; `HelpResultsViewModel` increments usage before opening songs through `ExternalSongOpener` or photos through `PhotoPagerRoute`
 - Library flow: `LibraryRoute` owns content-type, search, favorite, and timeline view state through `LibraryViewModel`
+- Detail/tag flow: `ResourceDetailRoute` edits content, favorite, and delete through `ResourceRepository`; `TagManagerRoute` manages custom/preset tags through `TagRepository`
 - Repository implementations: `DataResourceRepository` and `DataTagRepository` are the Hilt-bound concrete data layer for MVP UI flows
 - Locale flow: `App` observes the stored locale and applies it via `AppCompatDelegate`; `MainActivity` must remain an `AppCompatActivity`
 - Startup data flow: `App` launches `TagSeeder.seedIfNeeded()` with the Hilt-provided application scope to install missing preset tags idempotently

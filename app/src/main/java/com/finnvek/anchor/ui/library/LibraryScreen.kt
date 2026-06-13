@@ -1,6 +1,7 @@
 package com.finnvek.anchor.ui.library
 
 import androidx.annotation.StringRes
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -33,6 +34,7 @@ import com.finnvek.anchor.ui.theme.LocalAnchorSpacing
 
 @Composable
 fun LibraryRoute(
+    onResourceSelected: (Long) -> Unit,
     viewModel: LibraryViewModel = hiltViewModel(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
@@ -43,6 +45,7 @@ fun LibraryRoute(
         onViewModeSelected = viewModel::selectViewMode,
         onQueryChange = viewModel::updateQuery,
         onFavoriteToggle = viewModel::toggleFavoriteOnly,
+        onResourceSelected = onResourceSelected,
     )
 }
 
@@ -53,6 +56,7 @@ private fun LibraryScreen(
     onViewModeSelected: (LibraryViewMode) -> Unit,
     onQueryChange: (String) -> Unit,
     onFavoriteToggle: () -> Unit,
+    onResourceSelected: (Long) -> Unit,
 ) {
     val spacing = LocalAnchorSpacing.current
 
@@ -99,14 +103,23 @@ private fun LibraryScreen(
         }
 
         if (uiState.viewMode == LibraryViewMode.TIMELINE) {
-            timelineItems(uiState.timelineDays)
+            timelineItems(
+                days = uiState.timelineDays,
+                onResourceSelected = onResourceSelected,
+            )
         } else {
-            resourceItems(uiState.resources)
+            resourceItems(
+                resources = uiState.resources,
+                onResourceSelected = onResourceSelected,
+            )
         }
     }
 }
 
-private fun androidx.compose.foundation.lazy.LazyListScope.resourceItems(resources: List<ResourceSummary>) {
+private fun androidx.compose.foundation.lazy.LazyListScope.resourceItems(
+    resources: List<ResourceSummary>,
+    onResourceSelected: (Long) -> Unit,
+) {
     if (resources.isEmpty()) {
         item {
             Text(
@@ -117,14 +130,17 @@ private fun androidx.compose.foundation.lazy.LazyListScope.resourceItems(resourc
         }
     } else {
         items(resources, key = { resource -> resource.id }) { resource ->
-            LibraryResourceSurface {
+            LibraryResourceSurface(onClick = { onResourceSelected(resource.id) }) {
                 ResourceSummaryRow(resource = resource)
             }
         }
     }
 }
 
-private fun androidx.compose.foundation.lazy.LazyListScope.timelineItems(days: List<TimelineDay>) {
+private fun androidx.compose.foundation.lazy.LazyListScope.timelineItems(
+    days: List<TimelineDay>,
+    onResourceSelected: (Long) -> Unit,
+) {
     if (days.isEmpty()) {
         item {
             Text(
@@ -142,7 +158,7 @@ private fun androidx.compose.foundation.lazy.LazyListScope.timelineItems(days: L
                 )
             }
             items(day.resources, key = { resource -> "${day.dayStartMs}-${resource.id}" }) { resource ->
-                LibraryResourceSurface {
+                LibraryResourceSurface(onClick = { onResourceSelected(resource.id) }) {
                     ResourceSummaryRow(resource = resource)
                 }
             }
@@ -151,9 +167,12 @@ private fun androidx.compose.foundation.lazy.LazyListScope.timelineItems(days: L
 }
 
 @Composable
-private fun LibraryResourceSurface(content: @Composable () -> Unit) {
+private fun LibraryResourceSurface(
+    onClick: () -> Unit,
+    content: @Composable () -> Unit,
+) {
     Surface(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth().clickable(onClick = onClick),
         shape = MaterialTheme.shapes.small,
     ) {
         Column(

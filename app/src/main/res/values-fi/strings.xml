@@ -71,4 +71,14 @@
     <string name="library_view_timeline">Aikajana</string>
     <string name="library_favorites">Suosikit</string>
     <string name="library_empty">Tähän näkymään ei löydy tallennuksia.</string>
+    <string name="detail_save_changes">Tallenna muutokset</string>
+    <string name="detail_favorite">Suosikki</string>
+    <string name="detail_delete">Poista</string>
+    <string name="detail_delete_title">Poistetaanko tämä ankkuri?</string>
+    <string name="detail_delete_body">Tämä poistaa sen Anchorista.</string>
+    <string name="detail_cancel">Peruuta</string>
+    <string name="tag_manager_new_label">Uusi NEED-tagi</string>
+    <string name="tag_manager_create">Luo</string>
+    <string name="tag_manager_hide">Piilota</string>
+    <string name="tag_manager_delete">Poista</string>
 </resources>

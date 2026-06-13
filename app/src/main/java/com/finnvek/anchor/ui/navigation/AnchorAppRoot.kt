@@ -26,12 +26,14 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.finnvek.anchor.ui.capture.CaptureInitialDraft
 import com.finnvek.anchor.ui.capture.CaptureRoute
+import com.finnvek.anchor.ui.detail.ResourceDetailRoute
 import com.finnvek.anchor.ui.help.HelpNeedPickerRoute
 import com.finnvek.anchor.ui.help.HelpResultsRoute
 import com.finnvek.anchor.ui.home.HomeRoute
 import com.finnvek.anchor.ui.library.LibraryRoute
 import com.finnvek.anchor.ui.photo.PhotoPagerRoute
 import com.finnvek.anchor.ui.settings.SettingsRoute
+import com.finnvek.anchor.ui.tags.TagManagerRoute
 import com.finnvek.anchor.ui.theme.LocalAnchorSpacing
 
 @Composable
@@ -108,13 +110,21 @@ private fun AnchorNavHost(
                 onHelpNow = { navController.navigate(AnchorRoute.HelpNeedPicker.route) },
             )
         }
-        composable(AnchorRoute.Library.route) { LibraryRoute() }
+        composable(AnchorRoute.Library.route) {
+            LibraryRoute(
+                onResourceSelected = { resourceId ->
+                    navController.navigate(AnchorRoute.ResourceDetail.createRoute(resourceId))
+                },
+            )
+        }
         composable(AnchorRoute.Timeline.route) { AnchorPlaceholder(AnchorRoute.Timeline.titleRes) }
         composable(
             route = AnchorRoute.ResourceDetail.route,
             arguments = listOf(navArgument(AnchorRouteArgument.ResourceId) { type = NavType.StringType }),
         ) {
-            AnchorPlaceholder(AnchorRoute.ResourceDetail.titleRes)
+            ResourceDetailRoute(
+                onDeleted = { navController.popBackStack() },
+            )
         }
         composable(AnchorRoute.HelpNeedPicker.route) {
             HelpNeedPickerRoute(
@@ -141,7 +151,7 @@ private fun AnchorNavHost(
             PhotoPagerRoute()
         }
         composable(AnchorRoute.Settings.route) { SettingsRoute() }
-        composable(AnchorRoute.TagManager.route) { AnchorPlaceholder(AnchorRoute.TagManager.titleRes) }
+        composable(AnchorRoute.TagManager.route) { TagManagerRoute() }
         composable(AnchorRoute.InternalPhotoCapture.route) {
             CaptureRoute(
                 initialDraft = CaptureInitialDraft.EmptyPhoto,
