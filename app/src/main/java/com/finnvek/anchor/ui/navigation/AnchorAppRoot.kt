@@ -29,6 +29,7 @@ import com.finnvek.anchor.ui.capture.CaptureRoute
 import com.finnvek.anchor.ui.help.HelpNeedPickerRoute
 import com.finnvek.anchor.ui.help.HelpResultsRoute
 import com.finnvek.anchor.ui.home.HomeRoute
+import com.finnvek.anchor.ui.library.LibraryRoute
 import com.finnvek.anchor.ui.photo.PhotoPagerRoute
 import com.finnvek.anchor.ui.settings.SettingsRoute
 import com.finnvek.anchor.ui.theme.LocalAnchorSpacing
@@ -107,7 +108,7 @@ private fun AnchorNavHost(
                 onHelpNow = { navController.navigate(AnchorRoute.HelpNeedPicker.route) },
             )
         }
-        composable(AnchorRoute.Library.route) { AnchorPlaceholder(AnchorRoute.Library.titleRes) }
+        composable(AnchorRoute.Library.route) { LibraryRoute() }
         composable(AnchorRoute.Timeline.route) { AnchorPlaceholder(AnchorRoute.Timeline.titleRes) }
         composable(
             route = AnchorRoute.ResourceDetail.route,

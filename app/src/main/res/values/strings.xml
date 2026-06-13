@@ -63,4 +63,12 @@
     <string name="help_results_empty">No saved anchors for this need yet.</string>
     <string name="help_could_not_open">Couldn’t open this</string>
     <string name="photo_pager_empty">Photo not found</string>
+    <string name="library_search">Search</string>
+    <string name="library_all">All</string>
+    <string name="library_songs">Songs</string>
+    <string name="library_photos">Photos</string>
+    <string name="library_view_library">Library</string>
+    <string name="library_view_timeline">Timeline</string>
+    <string name="library_favorites">Favorites</string>
+    <string name="library_empty">No saved anchors match this view.</string>
 </resources>

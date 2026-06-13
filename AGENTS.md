@@ -24,6 +24,7 @@ No previous sessions found.
 - Photo storage source of truth: `PhotoStorage` copies selected/shared images to `filesDir/photos/`, writes thumbnails to `cacheDir/anchor-thumbnails/`, and owns cleanup by stored relative paths
 - Capture flow: `ShareCaptureActivity` converts `ACTION_SEND` text/images into `CaptureInitialDraft` and hosts `CaptureRoute`; `CaptureViewModel` saves song/photo captures through `ResourceRepository`
 - Home/Help flow: `HomeRoute` opens `HelpNeedPickerRoute`; `HelpResultsViewModel` increments usage before opening songs through `ExternalSongOpener` or photos through `PhotoPagerRoute`
+- Library flow: `LibraryRoute` owns content-type, search, favorite, and timeline view state through `LibraryViewModel`
 - Repository implementations: `DataResourceRepository` and `DataTagRepository` are the Hilt-bound concrete data layer for MVP UI flows
 - Locale flow: `App` observes the stored locale and applies it via `AppCompatDelegate`; `MainActivity` must remain an `AppCompatActivity`
 - Startup data flow: `App` launches `TagSeeder.seedIfNeeded()` with the Hilt-provided application scope to install missing preset tags idempotently

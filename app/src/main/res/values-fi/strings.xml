@@ -63,4 +63,12 @@
     <string name="help_results_empty">Tälle tarpeelle ei ole vielä tallennettuja ankkureita.</string>
     <string name="help_could_not_open">Tätä ei voitu avata</string>
     <string name="photo_pager_empty">Kuvaa ei löytynyt</string>
+    <string name="library_search">Hae</string>
+    <string name="library_all">Kaikki</string>
+    <string name="library_songs">Laulut</string>
+    <string name="library_photos">Kuvat</string>
+    <string name="library_view_library">Kirjasto</string>
+    <string name="library_view_timeline">Aikajana</string>
+    <string name="library_favorites">Suosikit</string>
+    <string name="library_empty">Tähän näkymään ei löydy tallennuksia.</string>
 </resources>
