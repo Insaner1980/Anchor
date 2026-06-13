@@ -31,13 +31,17 @@ import com.finnvek.anchor.ui.help.HelpNeedPickerRoute
 import com.finnvek.anchor.ui.help.HelpResultsRoute
 import com.finnvek.anchor.ui.home.HomeRoute
 import com.finnvek.anchor.ui.library.LibraryRoute
+import com.finnvek.anchor.ui.onboarding.OnboardingRoute
 import com.finnvek.anchor.ui.photo.PhotoPagerRoute
 import com.finnvek.anchor.ui.settings.SettingsRoute
 import com.finnvek.anchor.ui.tags.TagManagerRoute
 import com.finnvek.anchor.ui.theme.LocalAnchorSpacing
 
 @Composable
-fun AnchorAppRoot(modifier: Modifier = Modifier) {
+fun AnchorAppRoot(
+    onboardingDone: Boolean,
+    modifier: Modifier = Modifier,
+) {
     val navController = rememberNavController()
     val currentBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = currentBackStackEntry?.destination?.route
@@ -58,6 +62,7 @@ fun AnchorAppRoot(modifier: Modifier = Modifier) {
     ) { contentPadding ->
         AnchorNavHost(
             navController = navController,
+            onboardingDone = onboardingDone,
             modifier = Modifier.padding(contentPadding),
         )
     }
@@ -97,14 +102,25 @@ private fun AnchorBottomBar(
 @Composable
 private fun AnchorNavHost(
     navController: NavHostController,
+    onboardingDone: Boolean,
     modifier: Modifier = Modifier,
 ) {
     NavHost(
         navController = navController,
-        startDestination = AnchorRoute.Home.route,
+        startDestination = if (onboardingDone) AnchorRoute.Home.route else AnchorRoute.Onboarding.route,
         modifier = modifier.fillMaxSize(),
     ) {
-        composable(AnchorRoute.Onboarding.route) { AnchorPlaceholder(AnchorRoute.Onboarding.titleRes) }
+        composable(AnchorRoute.Onboarding.route) {
+            OnboardingRoute(
+                onDone = {
+                    navController.navigate(AnchorRoute.Home.route) {
+                        popUpTo(AnchorRoute.Onboarding.route) {
+                            inclusive = true
+                        }
+                    }
+                },
+            )
+        }
         composable(AnchorRoute.Home.route) {
             HomeRoute(
                 onHelpNow = { navController.navigate(AnchorRoute.HelpNeedPicker.route) },

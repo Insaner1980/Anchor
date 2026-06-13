@@ -81,4 +81,11 @@
     <string name="tag_manager_create">Create</string>
     <string name="tag_manager_hide">Hide</string>
     <string name="tag_manager_delete">Delete</string>
+    <string name="onboarding_step_one_title">Keep your anchors close</string>
+    <string name="onboarding_step_one_body">Save songs and photos that help you come back to yourself.</string>
+    <string name="onboarding_step_two_title">Nothing leaves this device</string>
+    <string name="onboarding_step_two_body">Anchor has no internet permission. Your collection stays here.</string>
+    <string name="onboarding_next">Next</string>
+    <string name="onboarding_start">Start</string>
+    <string name="onboarding_skip">Skip</string>
 </resources>

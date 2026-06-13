@@ -22,6 +22,13 @@ class AnchorAppViewModel @Inject constructor(
             initialValue = ThemeMode.SYSTEM,
         )
 
+    val onboardingDone: StateFlow<Boolean> =
+        settingsRepository.onboardingDone.stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(STATE_STOP_TIMEOUT_MS),
+            initialValue = false,
+        )
+
     private companion object {
         private const val STATE_STOP_TIMEOUT_MS = 5_000L
     }

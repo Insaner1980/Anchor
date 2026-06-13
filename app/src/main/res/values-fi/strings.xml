@@ -81,4 +81,11 @@
     <string name="tag_manager_create">Luo</string>
     <string name="tag_manager_hide">Piilota</string>
     <string name="tag_manager_delete">Poista</string>
+    <string name="onboarding_step_one_title">Pidä ankkurisi lähellä</string>
+    <string name="onboarding_step_one_body">Tallenna laulut ja kuvat, jotka auttavat palaamaan takaisin itseesi.</string>
+    <string name="onboarding_step_two_title">Mikään ei lähde tältä laitteelta</string>
+    <string name="onboarding_step_two_body">Anchorilla ei ole internet-oikeutta. Kokoelmasi pysyy täällä.</string>
+    <string name="onboarding_next">Seuraava</string>
+    <string name="onboarding_start">Aloita</string>
+    <string name="onboarding_skip">Ohita</string>
 </resources>

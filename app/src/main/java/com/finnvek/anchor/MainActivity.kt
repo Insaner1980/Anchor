@@ -23,13 +23,14 @@ class MainActivity : AppCompatActivity() {
         setContent {
             val viewModel: AnchorAppViewModel = hiltViewModel()
             val themeMode by viewModel.themeMode.collectAsStateWithLifecycle()
+            val onboardingDone by viewModel.onboardingDone.collectAsStateWithLifecycle()
             val systemInDarkTheme = isSystemInDarkTheme()
 
             AnchorTheme(
                 darkTheme = themeMode.shouldUseDarkTheme(systemInDarkTheme),
                 calm = themeMode == ThemeMode.CALM,
             ) {
-                AnchorAppRoot()
+                AnchorAppRoot(onboardingDone = onboardingDone)
             }
         }
     }
