@@ -17,6 +17,9 @@ No previous sessions found.
 - UI entry flow: `MainActivity` hosts `AnchorAppRoot`, which owns the Navigation Compose shell and Home/Library/You bottom navigation
 - Navigation source of truth: MVP route strings live in `ui/navigation/AnchorRoute.kt`
 - Design tokens: `AnchorTheme` provides centralized color schemes, `AnchorSpacing`, `AnchorShapes`, and `AnchorMotion`
+- Local data source of truth: `AnchorDatabase` owns `resources`, `tags`, and `resource_tag_refs` through `ResourceDao` and `TagDao`
+- Startup data flow: `App` launches `TagSeeder.seedIfNeeded()` with the Hilt-provided application scope to install missing preset tags idempotently
+- Repository contracts: resource, tag, and settings access flow through the interfaces in `repository/`; concrete implementations should preserve those boundaries
 - Privacy boundary: the merged manifest must not include `android.permission.INTERNET`
 - Backup policy: keep `android:allowBackup="false"` for the MVP privacy promise
 - Share entry: `ShareCaptureActivity` is the exported `ACTION_SEND` target for `text/plain` and `image/*`
