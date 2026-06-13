@@ -24,6 +24,9 @@ abstract class ResourceDao {
     @Query("SELECT * FROM resources WHERE id = :resourceId")
     abstract fun observeResource(resourceId: Long): Flow<ResourceEntity?>
 
+    @Query("SELECT * FROM resources WHERE id = :resourceId")
+    abstract suspend fun getResource(resourceId: Long): ResourceEntity?
+
     @Query("SELECT * FROM resources ORDER BY created_at_ms DESC LIMIT :limit")
     abstract fun observeHomeResources(limit: Int): Flow<List<ResourceEntity>>
 

@@ -24,6 +24,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.finnvek.anchor.ui.capture.CaptureInitialDraft
+import com.finnvek.anchor.ui.capture.CaptureRoute
 import com.finnvek.anchor.ui.settings.SettingsRoute
 import com.finnvek.anchor.ui.theme.LocalAnchorSpacing
 
@@ -120,7 +122,12 @@ private fun AnchorNavHost(
         }
         composable(AnchorRoute.Settings.route) { SettingsRoute() }
         composable(AnchorRoute.TagManager.route) { AnchorPlaceholder(AnchorRoute.TagManager.titleRes) }
-        composable(AnchorRoute.InternalPhotoCapture.route) { AnchorPlaceholder(AnchorRoute.InternalPhotoCapture.titleRes) }
+        composable(AnchorRoute.InternalPhotoCapture.route) {
+            CaptureRoute(
+                initialDraft = CaptureInitialDraft.EmptyPhoto,
+                onFinished = { navController.popBackStack() },
+            )
+        }
     }
 }
 
