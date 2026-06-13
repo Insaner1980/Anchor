@@ -1,4 +1,4 @@
-package com.finnvek.template.ui.theme
+package com.finnvek.anchor.ui.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme

@@ -1,4 +1,4 @@
-package com.finnvek.template.di
+package com.finnvek.anchor.di
 
 import dagger.Module
 import dagger.hilt.InstallIn

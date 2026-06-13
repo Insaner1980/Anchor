@@ -7,7 +7,7 @@ plugins {
     alias(libs.plugins.detekt)
 }
 
-val releaseSigningEnvPrefix = "APP" // Change to your app name, e.g. "KNITTOOLS"
+val releaseSigningEnvPrefix = "ANCHOR"
 
 val releaseSigningEnvNames =
     listOf(
@@ -27,12 +27,12 @@ fun requiredReleaseEnv(name: String): String =
         ?: error("Release signing requires the $name environment variable.")
 
 android {
-    namespace = "com.finnvek.template"
+    namespace = "com.finnvek.anchor"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.finnvek.template"
-        minSdk = 29
+        applicationId = "com.finnvek.anchor"
+        minSdk = 26
         targetSdk = 35
         versionCode = 1
         versionName = "1.0.0"
@@ -180,6 +180,7 @@ dependencies {
     // Compose BOM
     val composeBom = platform(libs.compose.bom)
     implementation(composeBom)
+    androidTestImplementation(composeBom)
     implementation(libs.compose.ui)
     implementation(libs.compose.ui.graphics)
     implementation(libs.compose.ui.tooling.preview)
@@ -204,6 +205,7 @@ dependencies {
     // Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
+    ksp(libs.kotlin.metadata.jvm)
     implementation(libs.hilt.navigation.compose)
 
     // Coroutines
@@ -216,6 +218,8 @@ dependencies {
     // Core
     implementation(libs.core.ktx)
     implementation(libs.activity.compose)
+    implementation(libs.appcompat)
+    implementation(libs.coil.compose)
 
     // Detekt plugins
     detektPlugins(libs.detekt.compose.rules)
@@ -224,7 +228,11 @@ dependencies {
     testImplementation(libs.junit)
     testImplementation(libs.coroutines.test)
     testImplementation(libs.mockk)
+    testImplementation(libs.room.testing)
+    androidTestImplementation(libs.androidx.test.core)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.androidx.test.runner)
     androidTestImplementation(libs.room.testing)
+    androidTestImplementation(libs.compose.ui.test.junit4)
+    debugImplementation(libs.compose.ui.test.manifest)
 }

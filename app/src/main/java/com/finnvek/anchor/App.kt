@@ -1,4 +1,4 @@
-package com.finnvek.template
+package com.finnvek.anchor
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
