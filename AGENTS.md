@@ -14,6 +14,9 @@ No previous sessions found.
 - Package, namespace, and applicationId: `com.finnvek.anchor`
 - Android app module: single module `:app`
 - Architecture direction: single-module MVVM with Hilt DI, Room local data, DataStore settings, and app-private `PhotoStorage`
+- UI entry flow: `MainActivity` hosts `AnchorAppRoot`, which owns the Navigation Compose shell and Home/Library/You bottom navigation
+- Navigation source of truth: MVP route strings live in `ui/navigation/AnchorRoute.kt`
+- Design tokens: `AnchorTheme` provides centralized color schemes, `AnchorSpacing`, `AnchorShapes`, and `AnchorMotion`
 - Privacy boundary: the merged manifest must not include `android.permission.INTERNET`
 - Backup policy: keep `android:allowBackup="false"` for the MVP privacy promise
 - Share entry: `ShareCaptureActivity` is the exported `ACTION_SEND` target for `text/plain` and `image/*`
