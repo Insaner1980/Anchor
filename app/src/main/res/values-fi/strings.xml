@@ -56,4 +56,11 @@
     <string name="tag_need_feel_less_alone">Tuntea vähemmän yksinäisyyttä</string>
     <string name="tag_need_fall_asleep">Nukahtaa</string>
     <string name="tag_need_ride_out_a_wave">Selvitä aallosta</string>
+    <string name="home_help_now">Mitä tarvitset juuri nyt?</string>
+    <string name="home_recent">Viimeisimmät</string>
+    <string name="home_empty">Tallenna laulu tai kuva ja rakenna oma Anchorisi vähitellen.</string>
+    <string name="help_close">Sulje</string>
+    <string name="help_results_empty">Tälle tarpeelle ei ole vielä tallennettuja ankkureita.</string>
+    <string name="help_could_not_open">Tätä ei voitu avata</string>
+    <string name="photo_pager_empty">Kuvaa ei löytynyt</string>
 </resources>

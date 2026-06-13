@@ -163,6 +163,7 @@ class DataResourceRepository @Inject constructor(
             createdAtMs = createdAtMs,
             title = title,
             subtitle = subtitle,
+            uri = uri,
             note = note,
             favorite = favorite,
             timesUsed = timesUsed,

@@ -22,6 +22,7 @@ data class ResourceSummary(
     val createdAtMs: Long,
     val title: String,
     val subtitle: String?,
+    val uri: String?,
     val note: String?,
     val favorite: Boolean,
     val timesUsed: Int,

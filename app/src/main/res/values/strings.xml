@@ -56,4 +56,11 @@
     <string name="tag_need_feel_less_alone">Feel less alone</string>
     <string name="tag_need_fall_asleep">Fall asleep</string>
     <string name="tag_need_ride_out_a_wave">Ride out a wave</string>
+    <string name="home_help_now">What do you need right now?</string>
+    <string name="home_recent">Recent</string>
+    <string name="home_empty">Save a song or photo to start building your Anchor.</string>
+    <string name="help_close">Close</string>
+    <string name="help_results_empty">No saved anchors for this need yet.</string>
+    <string name="help_could_not_open">Couldn’t open this</string>
+    <string name="photo_pager_empty">Photo not found</string>
 </resources>

@@ -26,6 +26,10 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.finnvek.anchor.ui.capture.CaptureInitialDraft
 import com.finnvek.anchor.ui.capture.CaptureRoute
+import com.finnvek.anchor.ui.help.HelpNeedPickerRoute
+import com.finnvek.anchor.ui.help.HelpResultsRoute
+import com.finnvek.anchor.ui.home.HomeRoute
+import com.finnvek.anchor.ui.photo.PhotoPagerRoute
 import com.finnvek.anchor.ui.settings.SettingsRoute
 import com.finnvek.anchor.ui.theme.LocalAnchorSpacing
 
@@ -98,7 +102,11 @@ private fun AnchorNavHost(
         modifier = modifier.fillMaxSize(),
     ) {
         composable(AnchorRoute.Onboarding.route) { AnchorPlaceholder(AnchorRoute.Onboarding.titleRes) }
-        composable(AnchorRoute.Home.route) { AnchorPlaceholder(AnchorRoute.Home.titleRes) }
+        composable(AnchorRoute.Home.route) {
+            HomeRoute(
+                onHelpNow = { navController.navigate(AnchorRoute.HelpNeedPicker.route) },
+            )
+        }
         composable(AnchorRoute.Library.route) { AnchorPlaceholder(AnchorRoute.Library.titleRes) }
         composable(AnchorRoute.Timeline.route) { AnchorPlaceholder(AnchorRoute.Timeline.titleRes) }
         composable(
@@ -107,18 +115,29 @@ private fun AnchorNavHost(
         ) {
             AnchorPlaceholder(AnchorRoute.ResourceDetail.titleRes)
         }
-        composable(AnchorRoute.HelpNeedPicker.route) { AnchorPlaceholder(AnchorRoute.HelpNeedPicker.titleRes) }
+        composable(AnchorRoute.HelpNeedPicker.route) {
+            HelpNeedPickerRoute(
+                onNeedSelected = { tagId ->
+                    navController.navigate(AnchorRoute.HelpResults.createRoute(tagId))
+                },
+                onClose = { navController.popBackStack() },
+            )
+        }
         composable(
             route = AnchorRoute.HelpResults.route,
             arguments = listOf(navArgument(AnchorRouteArgument.TagId) { type = NavType.StringType }),
         ) {
-            AnchorPlaceholder(AnchorRoute.HelpResults.titleRes)
+            HelpResultsRoute(
+                onOpenPhoto = { resourceId ->
+                    navController.navigate(AnchorRoute.PhotoPager.createRoute(resourceId))
+                },
+            )
         }
         composable(
             route = AnchorRoute.PhotoPager.route,
             arguments = listOf(navArgument(AnchorRouteArgument.ResourceId) { type = NavType.StringType }),
         ) {
-            AnchorPlaceholder(AnchorRoute.PhotoPager.titleRes)
+            PhotoPagerRoute()
         }
         composable(AnchorRoute.Settings.route) { SettingsRoute() }
         composable(AnchorRoute.TagManager.route) { AnchorPlaceholder(AnchorRoute.TagManager.titleRes) }

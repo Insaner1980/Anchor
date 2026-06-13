@@ -40,6 +40,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.finnvek.anchor.R
 import com.finnvek.anchor.domain.model.AnchorTag
 import com.finnvek.anchor.domain.model.ResourceType
+import com.finnvek.anchor.ui.tags.localizedLabel
 import com.finnvek.anchor.ui.theme.LocalAnchorSpacing
 
 @Composable
@@ -264,47 +265,12 @@ private fun TagSection(
                 FilterChip(
                     selected = uiState.selectedTags.any { selected -> selected.tagId == tag.id },
                     onClick = { onTagToggle(tag) },
-                    label = { Text(tag.label()) },
+                    label = { Text(tag.localizedLabel()) },
                 )
             }
         }
     }
 }
-
-@Composable
-private fun AnchorTag.label(): String {
-    val presetLabel = presetKey?.let(::presetLabelRes)
-    return when {
-        presetLabel != null -> stringResource(presetLabel)
-        customLabel != null -> customLabel
-        else -> checkNotNull(presetKey)
-    }
-}
-
-@StringRes
-private fun presetLabelRes(presetKey: String): Int? = PresetLabelResources[presetKey]
-
-private val PresetLabelResources =
-    mapOf(
-        "calm" to R.string.tag_feeling_calm,
-        "safe" to R.string.tag_feeling_safe,
-        "joyful" to R.string.tag_feeling_joyful,
-        "energized" to R.string.tag_feeling_energized,
-        "melancholy" to R.string.tag_feeling_melancholy,
-        "anxious" to R.string.tag_feeling_anxious,
-        "angry" to R.string.tag_feeling_angry,
-        "restless" to R.string.tag_feeling_restless,
-        "numb" to R.string.tag_feeling_numb,
-        "sad" to R.string.tag_feeling_sad,
-        "calm_down" to R.string.tag_need_calm_down,
-        "release_anger" to R.string.tag_need_release_anger,
-        "feel_safe" to R.string.tag_need_feel_safe,
-        "get_energy" to R.string.tag_need_get_energy,
-        "ground_myself" to R.string.tag_need_ground_myself,
-        "feel_less_alone" to R.string.tag_need_feel_less_alone,
-        "fall_asleep" to R.string.tag_need_fall_asleep,
-        "ride_out_a_wave" to R.string.tag_need_ride_out_a_wave,
-    )
 
 private const val NOTE_MIN_LINES = 2
 private const val BODY_FEEL_MIN_LINES = 2

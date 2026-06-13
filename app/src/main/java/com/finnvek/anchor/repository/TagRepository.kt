@@ -9,6 +9,8 @@ interface TagRepository {
 
     fun observeVisibleTags(category: TagCategory): Flow<List<AnchorTag>>
 
+    fun observeHelpNeedTags(): Flow<List<AnchorTag>>
+
     suspend fun createCustomTag(
         label: String,
         emoji: String?,

@@ -18,8 +18,14 @@ sealed class AnchorRoute(
     data object Timeline : AnchorRoute("timeline", R.string.screen_timeline)
     data object ResourceDetail : AnchorRoute("resource/{resourceId}", R.string.screen_resource_detail)
     data object HelpNeedPicker : AnchorRoute("help/need", R.string.screen_help_need)
-    data object HelpResults : AnchorRoute("help/results/{tagId}", R.string.screen_help_results)
-    data object PhotoPager : AnchorRoute("photos/{resourceId}", R.string.screen_photo_pager)
+    data object HelpResults : AnchorRoute("help/results/{tagId}", R.string.screen_help_results) {
+        fun createRoute(tagId: Long): String = "help/results/$tagId"
+    }
+
+    data object PhotoPager : AnchorRoute("photos/{resourceId}", R.string.screen_photo_pager) {
+        fun createRoute(resourceId: Long): String = "photos/$resourceId"
+    }
+
     data object Settings : AnchorRoute("settings", R.string.screen_settings)
     data object TagManager : AnchorRoute("tags", R.string.screen_tag_manager)
     data object InternalPhotoCapture : AnchorRoute("capture/photo", R.string.screen_photo_capture)
