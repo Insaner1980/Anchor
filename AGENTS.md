@@ -34,6 +34,7 @@ No previous sessions found.
 - Privacy boundary: the merged manifest must not include `android.permission.INTERNET`
 - Backup policy: keep `android:allowBackup="false"` for the MVP privacy promise
 - Share entry: `ShareCaptureActivity` is the exported `ACTION_SEND` target for `text/plain` and `image/*`
+- Compliance docs: `docs/privacy-policy.md` and `docs/play-release-checklist.md` track the no-internet/Data Safety/Health declaration release assumptions
 
 ## Verification
 

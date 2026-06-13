@@ -1,65 +1,47 @@
-# Android Kotlin Starter
+# Anchor
 
-Finnvek Android project template. Kotlin + Jetpack Compose + Material Design 3.
+Anchor is an offline-first Android MVP for saving personal song and photo anchors. It is built with Kotlin, Jetpack Compose, Material 3, Hilt, Room, DataStore, and app-private photo storage.
 
-## Quick Start
+## MVP Scope
 
-1. Click **Use this template** on GitHub (or clone the repo)
-2. Replace `com.finnvek.template` with your package name
-3. Replace `MyApp` in `settings.gradle.kts` and `strings.xml`
-4. Update `releaseSigningEnvPrefix` in `app/build.gradle.kts`
+- Save shared songs and selected/shared photos.
+- Keep all app data on device; the app manifest must not include `android.permission.INTERNET`.
+- Use `Room` for resources, tags, and tag links.
+- Use `DataStore` for theme, onboarding, and app language.
+- Copy photos into `filesDir/photos/` and thumbnails into `cacheDir/anchor-thumbnails/`.
+- Provide Home, Help now, Library, Timeline, Detail, Tag manager, Settings, and Onboarding flows.
 
-## What's Included
+## Verification
 
-- **Gradle**: Version catalog, R8, signing config with env var placeholders
-- **Compose**: BOM, Material 3, Navigation, Animation, Foundation
-- **Architecture**: Hilt DI, Room, DataStore, Coroutines, Lifecycle
-- **Quality**: detekt (with Compose rules), ktlint, Android Lint
-- **CI/CD**: GitHub Actions (build, test, CodeQL)
-- **Theme**: Minimal M3 setup (dynamic colors, default typography/shapes)
+Run these after implementation changes:
 
-## What's NOT Included
-
-- Navigation, screens, UI components, business logic
-- Dark/light theme selection or custom color palettes
-- `lint-check` / `security-check` scripts (global tools in `~/bin/`)
-
-## Project Structure
-
+```powershell
+.\gradlew.bat :app:assembleDebug
+.\gradlew.bat :app:testDebugUnitTest
+.\gradlew.bat :app:lintDebug :app:detekt :app:ktlintCheck
 ```
-app/src/main/java/com/finnvek/template/
-├── ui/
-│   ├── screens/        # App screens
-│   ├── components/     # Shared UI components
-│   ├── theme/          # M3 theme (Theme.kt, Type.kt, Shapes.kt)
-│   ├── navigation/     # Navigation graph
-│   ├── state/          # UI state classes
-│   └── viewmodel/      # ViewModels
-├── data/
-│   ├── local/          # Room database, DAOs, entities
-│   └── datastore/      # DataStore preferences
-├── domain/
-│   ├── usecase/        # Use cases
-│   └── model/          # Domain models
-├── repository/         # Repository pattern
-├── di/                 # Hilt modules
-└── util/
-    ├── extensions/     # Kotlin extensions
-    └── constants/      # App constants
-```
+
+Run `.\gradlew.bat :app:connectedDebugAndroidTest` only when a device or emulator is available.
+
+The user-owned `lc` and `sc` wrappers are intentionally not run by agents.
+
+## Privacy And Compliance
+
+- Privacy policy draft: [docs/privacy-policy.md](docs/privacy-policy.md)
+- Play release checklist: [docs/play-release-checklist.md](docs/play-release-checklist.md)
+
+Current MVP claim: no network permission, no analytics SDK, no crash SDK, no ads SDK, no billing SDK, and no off-device sync.
 
 ## Release Signing
 
-Set environment variables before release build:
+Release signing uses the `ANCHOR` environment variable prefix:
 
-```bash
-export APP_KEYSTORE_PATH=/path/to/keystore.jks
-export APP_KEYSTORE_PASSWORD=password
-export APP_KEY_ALIAS=alias
-export APP_KEY_PASSWORD=password
+```powershell
+$env:ANCHOR_KEYSTORE_PATH="C:\path\to\keystore.jks"
+$env:ANCHOR_KEYSTORE_PASSWORD="password"
+$env:ANCHOR_KEY_ALIAS="alias"
+$env:ANCHOR_KEY_PASSWORD="password"
 ```
-
-Change `APP` prefix in `app/build.gradle.kts` to match your app.
 
 ## License
 
