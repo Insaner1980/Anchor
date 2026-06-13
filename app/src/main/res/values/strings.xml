@@ -14,4 +14,15 @@
     <string name="screen_settings">Settings</string>
     <string name="screen_tag_manager">Tags</string>
     <string name="screen_photo_capture">Add photo</string>
+    <string name="settings_theme_title">Theme</string>
+    <string name="settings_theme_system">System</string>
+    <string name="settings_theme_light">Light</string>
+    <string name="settings_theme_dark">Dark</string>
+    <string name="settings_theme_calm">Calm</string>
+    <string name="settings_language_title">Language</string>
+    <string name="settings_language_system">System</string>
+    <string name="settings_language_finnish">Finnish</string>
+    <string name="settings_language_english">English</string>
+    <string name="settings_privacy_title">Privacy</string>
+    <string name="settings_privacy_body">No internet permission. Your collection stays on this device.</string>
 </resources>

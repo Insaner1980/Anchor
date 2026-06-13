@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Anchor</string>
+    <string name="nav_home">Koti</string>
+    <string name="nav_library">Kirjasto</string>
+    <string name="nav_you">Sinä</string>
+    <string name="screen_onboarding">Tervetuloa</string>
+    <string name="screen_home">Koti</string>
+    <string name="screen_library">Kirjasto</string>
+    <string name="screen_timeline">Aikajana</string>
+    <string name="screen_resource_detail">Sisältö</string>
+    <string name="screen_help_need">Mitä tarvitset juuri nyt?</string>
+    <string name="screen_help_results">Apua nyt</string>
+    <string name="screen_photo_pager">Kuvat</string>
+    <string name="screen_settings">Asetukset</string>
+    <string name="screen_tag_manager">Tagit</string>
+    <string name="screen_photo_capture">Lisää kuva</string>
+    <string name="settings_theme_title">Teema</string>
+    <string name="settings_theme_system">Laite</string>
+    <string name="settings_theme_light">Vaalea</string>
+    <string name="settings_theme_dark">Tumma</string>
+    <string name="settings_theme_calm">Rauha</string>
+    <string name="settings_language_title">Kieli</string>
+    <string name="settings_language_system">Laite</string>
+    <string name="settings_language_finnish">Suomi</string>
+    <string name="settings_language_english">Englanti</string>
+    <string name="settings_privacy_title">Yksityisyys</string>
+    <string name="settings_privacy_body">Ei internet-oikeutta. Kokoelmasi pysyy tällä laitteella.</string>
+</resources>

@@ -15,6 +15,9 @@ import kotlinx.coroutines.SupervisorJob
 annotation class IoDispatcher
 
 @Qualifier
+annotation class MainDispatcher
+
+@Qualifier
 annotation class ApplicationScope
 
 @Module
@@ -24,6 +27,10 @@ object CoroutineModule {
     @Provides
     @IoDispatcher
     fun provideIoDispatcher(): CoroutineDispatcher = Dispatchers.IO
+
+    @Provides
+    @MainDispatcher
+    fun provideMainDispatcher(): CoroutineDispatcher = Dispatchers.Main.immediate
 
     @Provides
     @Singleton

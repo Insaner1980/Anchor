@@ -15,9 +15,13 @@ No previous sessions found.
 - Android app module: single module `:app`
 - Architecture direction: single-module MVVM with Hilt DI, Room local data, DataStore settings, and app-private `PhotoStorage`
 - UI entry flow: `MainActivity` hosts `AnchorAppRoot`, which owns the Navigation Compose shell and Home/Library/You bottom navigation
+- Theme flow: `AnchorAppViewModel` reads `SettingsRepository.themeMode`; `MainActivity` applies it to `AnchorTheme`
 - Navigation source of truth: MVP route strings live in `ui/navigation/AnchorRoute.kt`
+- Settings UI: `ui/settings/SettingsRoute` is the You/settings destination and writes through `SettingsViewModel`
 - Design tokens: `AnchorTheme` provides centralized color schemes, `AnchorSpacing`, `AnchorShapes`, and `AnchorMotion`
 - Local data source of truth: `AnchorDatabase` owns `resources`, `tags`, and `resource_tag_refs` through `ResourceDao` and `TagDao`
+- Settings source of truth: `DataStoreSettingsRepository` owns theme, onboarding, and app-locale preferences in `anchor_settings`
+- Locale flow: `App` observes the stored locale and applies it via `AppCompatDelegate`; `MainActivity` must remain an `AppCompatActivity`
 - Startup data flow: `App` launches `TagSeeder.seedIfNeeded()` with the Hilt-provided application scope to install missing preset tags idempotently
 - Repository contracts: resource, tag, and settings access flow through the interfaces in `repository/`; concrete implementations should preserve those boundaries
 - Privacy boundary: the merged manifest must not include `android.permission.INTERNET`

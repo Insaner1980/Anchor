@@ -24,6 +24,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.finnvek.anchor.ui.settings.SettingsRoute
 import com.finnvek.anchor.ui.theme.LocalAnchorSpacing
 
 @Composable
@@ -117,7 +118,7 @@ private fun AnchorNavHost(
         ) {
             AnchorPlaceholder(AnchorRoute.PhotoPager.titleRes)
         }
-        composable(AnchorRoute.Settings.route) { AnchorPlaceholder(AnchorRoute.Settings.titleRes) }
+        composable(AnchorRoute.Settings.route) { SettingsRoute() }
         composable(AnchorRoute.TagManager.route) { AnchorPlaceholder(AnchorRoute.TagManager.titleRes) }
         composable(AnchorRoute.InternalPhotoCapture.route) { AnchorPlaceholder(AnchorRoute.InternalPhotoCapture.titleRes) }
     }

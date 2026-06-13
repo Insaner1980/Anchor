@@ -79,6 +79,10 @@ android {
         buildConfig = true
     }
 
+    androidResources {
+        generateLocaleConfig = true
+    }
+
     lint {
         abortOnError = true
         warningsAsErrors = false
